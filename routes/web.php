@@ -11,3 +11,23 @@ Route::get('/users', function () {
 Route::get('/posts', function () {
     return view('posts');
 });
+
+
+// TO DO:
+// - create models
+
+
+//1 user hasMany posts
+//1 post belongsTo 1 user
+
+//1 user hasMany comments
+//1 comment belongsTo 1 user
+
+//1 post hasMany comments
+//1 comment belongsTo 1 post
+
+//1 tag belongsToMany posts
+//1 post belongsToMany tags OVDE JE PIVOT TABLE
+
+
+
