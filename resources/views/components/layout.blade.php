@@ -20,9 +20,14 @@
             <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                {{-- zajednicki: rounded-md px-3 py-2 text-sm font-medium --}}
                 <a href="/" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">Home</a>
                 <a href="/users" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Users</a>
                 <a href="/posts" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Posts</a>
+
+                <x-nav-link href="/" :active="request()->is('/')" >Home</x-nav-link>
+                <x-nav-link href="/users" :active="request()->is('users')" >Users</x-nav-link>
+                <x-nav-link href="/posts" :active="request()->is('posts')" >Posts</x-nav-link>
                 </div>
             </div>
             </div>
