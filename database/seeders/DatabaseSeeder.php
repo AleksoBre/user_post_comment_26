@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
 
         $users = User::factory(10)->create();
         $tags = Tag::factory(10)->create();
-        $posts = Post::factory(100)->recycle($users)->hasAttached($tags)->create();
-        Comment::factory(600)->recycle($posts)->create();
+        $posts = Post::factory(100)->recycle($users)
+        ->hasAttached($tags->random(rand(1, 3)))->create();
+        Comment::factory(600)->recycle($posts)->recycle($users)->create();
 
     }
 }
