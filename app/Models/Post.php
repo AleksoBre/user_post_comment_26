@@ -11,4 +11,14 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = ['content'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function comments(){
+        return $this->belongsTo(Comment::class);
+    }
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
 }
