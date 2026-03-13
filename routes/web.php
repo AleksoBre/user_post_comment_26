@@ -13,6 +13,5 @@ Route::get('/users', function () {
 
 // moram nekako da prikazem i tagove
 Route::get('/posts', function () {
-    return view('posts',['posts' => Post::with('user:id,username')->withCount('comments')->paginate(10)]);
+    return view('posts',['posts' => Post::withCount('comments')->with('user:id,username')->paginate(10)]);
 });
-
