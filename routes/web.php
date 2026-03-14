@@ -10,6 +10,10 @@ Route::get('/', function () {
 Route::get('/users', function () {
     return view('users.index', ['users' => User::withCount('posts', 'comments')->paginate(5)]);
 });
+Route::get('/users/{id}', function($id) {
+    return view('users.show', ['user' => User::find($id)]);
+});
+
 
 // moram nekako da prikazem i tagove
 Route::get('/posts', function () {
