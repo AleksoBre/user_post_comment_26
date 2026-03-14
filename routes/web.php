@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/users', function () {
-    return view('users', ['users' => User::withCount('posts', 'comments')->paginate(5)]);
+    return view('users.index', ['users' => User::withCount('posts', 'comments')->paginate(5)]);
 });
 
 // moram nekako da prikazem i tagove
