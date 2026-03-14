@@ -10,12 +10,15 @@ Route::get('/', function () {
 Route::get('/users', function () {
     return view('users.index', ['users' => User::withCount('posts', 'comments')->paginate(5)]);
 });
-Route::get('/users/{id}', function($id) {
-    return view('users.show', ['user' => User::find($id)]);
+Route::get('/users/{user}', function($user) {
+    return view('users.show', ['user' => User::with('posts')->withCount('comments')->findOrFail($user)]);
 });
 
 
 // moram nekako da prikazem i tagove
 Route::get('/posts', function () {
-    return view('posts',['posts' => Post::withCount('comments')->with('user:id,username')->paginate(10)]);
+    return view('posts.index',['posts' => Post::withCount('comments')->with('user:id,username')->paginate(10)]);
+});
+Route::get('/posts/{post}', function($post) {
+    return view('posts.show', ['post' => Post::with('user:id,username', 'comments.user:id,username')->findOrFail($post)]);
 });
