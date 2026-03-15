@@ -6,7 +6,7 @@
             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                 @foreach ($posts as $post)
                     <li class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
-                        <a href="/users/{{ $post->id }}" class="block px-6 py-4">
+                        <a href="/posts/{{ $post->id }}" class="block px-6 py-4">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center min-w-0">
                                     <div class="h-10 w-10 flex-shrink-0 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">

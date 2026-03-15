@@ -17,8 +17,11 @@ Route::get('/users/{user}', function($user) {
 
 // moram nekako da prikazem i tagove
 Route::get('/posts', function () {
-    return view('posts.index',['posts' => Post::withCount('comments')->with('user:id,username')->paginate(10)]);
+    return view('posts.index',[
+        'posts' => Post::withCount('comments')->with('user:id,username')->paginate(10)
+
+        ]);
 });
 Route::get('/posts/{post}', function($post) {
-    return view('posts.show', ['post' => Post::with('user:id,username', 'comments.user:id,username')->findOrFail($post)]);
+    return view('posts.show', ['post' => Post::with('user:id,username', 'comments.user:id,username', 'tags:id,name')->findOrFail($post)]);
 });

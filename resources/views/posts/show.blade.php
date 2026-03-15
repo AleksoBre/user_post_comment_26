@@ -2,6 +2,12 @@
     <x-slot:heading>Post id: {{$post->id}}</x-slot:heading>
     <div>
         <ul>
+            <li>Tags:
+                @foreach ($post->tags as $tag)
+                    {{ $tag->name }}, 
+                @endforeach
+            </li>
+            <br>
             <li>ID: {{ $post->id }}</li>
             <li>Created by: <a href="/users/{{ $post->user->id }}">{{ $post->user->username }}</a></li>
             <li>email: {{ $post->user->email }}</li>
