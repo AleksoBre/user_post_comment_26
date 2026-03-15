@@ -30,6 +30,14 @@
                                             <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400">
                                                 {{ $post->comments_count }} {{ Str::plural('comment', $post->comments_count) }}
                                             </span>
+
+                                            <span class="text-gray-300 dark:text-gray-600">•</span>
+
+                                            <span class="text-xs font-medium text-orange-600 dark:text-orange-400">
+                                                @foreach ($post->tags as $tag)
+                                                    {{$tag->name}}
+                                                @endforeach
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
