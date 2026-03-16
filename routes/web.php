@@ -11,7 +11,7 @@ Route::get('/users', function () {
     return view('users.index', ['users' => User::withCount('posts', 'comments')->paginate(5)]);
 });
 Route::get('/users/{user}', function($user) {
-    return view('users.show', ['user' => User::with('posts')->withCount('comments')->findOrFail($user)]);
+    return view('users.show', ['user' => User::with('posts.tags')->withCount('comments')->findOrFail($user)]);
 });
 
 
