@@ -23,5 +23,5 @@ Route::get('/posts', function () {
         ]);
 });
 Route::get('/posts/{post}', function($post) {
-    return view('posts.show', ['post' => Post::with('user:id,username', 'comments.user:id,username', 'tags:id,name')->findOrFail($post)]);
+    return view('posts.show', ['post' => Post::with('user:id,username,email', 'comments.user:id,username', 'tags:id,name')->findOrFail($post)]);
 });
