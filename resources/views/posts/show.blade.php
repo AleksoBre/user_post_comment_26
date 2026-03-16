@@ -10,7 +10,7 @@
                 <div class="flex gap-2">
                     @foreach ($post->tags as $tag)
                         <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
-                            {{ $tag->name }}
+                            <a href="/tags/{{ $tag->id }}">{{ $tag->name }}</a>
                         </span>
                     @endforeach
                 </div>
