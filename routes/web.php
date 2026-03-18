@@ -17,8 +17,7 @@ Route::get('/users/{user}', function(User $user) {
 
 Route::get('/posts', function () {
     return view('posts.index',[
-        'posts' => Post::withCount('comments')->with('user:id,username', 'tags:id,name')->paginate(10)
-
+        'posts' => Post::latest()->withCount('comments')->with('user:id,username', 'tags:id,name')->simplePaginate(10)
         ]);
 });
 Route::get('/posts/{post}', function(Post $post) {
@@ -32,3 +31,7 @@ Route::get('/tags/{tag}', function(Tag $tag) {
         ])
     ]);
 });
+
+// To do: 
+// - only show posts with comments
+// - sort posts by newest
