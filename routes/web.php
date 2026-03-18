@@ -20,6 +20,13 @@ Route::get('/posts', function () {
         'posts' => Post::latest()->withCount('comments')->with('user:id,username', 'tags:id,name')->simplePaginate(10)
         ]);
 });
+
+// POSTS WITH COMMENTS
+Route::get('/postswcomments', function () {
+    return view('posts.index',[
+        'posts' => Post::latest()->withCount('comments')->with('user:id,username', 'tags:id,name')->has('comments')->simplePaginate(10)
+        ]);
+});
 Route::get('/posts/{post}', function(Post $post) {
     return view('posts.show', ['post' => $post->load('user:id,username,email', 'comments.user:id,username', 'tags:id,name')]);
 });
@@ -34,4 +41,3 @@ Route::get('/tags/{tag}', function(Tag $tag) {
 
 // To do: 
 // - only show posts with comments
-// - sort posts by newest
