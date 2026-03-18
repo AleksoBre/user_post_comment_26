@@ -1,7 +1,9 @@
 <x-layout>
     <x-slot:heading>Posts</x-slot:heading>
 
-    <a href="/postswcomments">Show only posts that contain comments</a>
+    <div>
+        <a href="/posts?filter=has_comments">Show only posts that contain comments</a>
+    </div>
     <div class="container mx-auto py-8 px-4">
         <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
