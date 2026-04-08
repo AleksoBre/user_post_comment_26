@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $query = Post::latest()->withCount('comments')->with('user:id,username', 'tags:id,name');
@@ -21,17 +19,11 @@ class PostController extends Controller
         return view('posts.index',['posts' => $query->simplePaginate(10)]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //validate
@@ -50,9 +42,6 @@ class PostController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Post $post)
     {
         return view('posts.show', ['post' => $post->load('user:id,username,email', 'comments.user:id,username', 'tags:id,name')]);
