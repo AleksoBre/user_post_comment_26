@@ -1,5 +1,27 @@
 <x-layout>
-    <x-slot:heading>Post ID: {{ $post->id }}</x-slot:heading>
+    <x-slot:heading>
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold tracking-tight ">
+                Post ID: {{ $post->id }}
+            </h1>
+
+            <div class="flex items-center gap-x-2">
+                <a href="/posts/{{ $post->id }}/edit" 
+                class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    Edit
+                </a>
+
+                <form method="POST" action="/posts/{{ $post->id }}" class="inline-flex">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" 
+                            class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 transition">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </x-slot:heading>
 
     <div class="max-w-3xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
         

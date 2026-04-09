@@ -47,27 +47,27 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post->load('user:id,username,email', 'comments.user:id,username', 'tags:id,name')]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Post $post)
     {
-        //
+
+        $attributes = $request->validate([
+            'content' => ['required', 'min:3']
+        ]);
+
+        $post->update($attributes);
+
+        return redirect("/posts/{$post->id}");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect('/posts');
     }
 }
