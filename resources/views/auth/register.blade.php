@@ -6,37 +6,55 @@
     <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="mx-auto h-10 w-auto" />
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Create an account!</h2>
   </div>
-
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form action="#" method="POST" class="space-y-6">
+    <form :action="route('register.store')" method="POST" class="space-y-4">
+      @csrf
+
+      <div>
+        <label for="username" class="block text-sm/6 font-medium text-gray-100">Username</label>
+        <div class="mt-1">
+          <input id="username" type="username" name="username" required autocomplete="username" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('username')}}"/>
+        </div>
+        @error('username')
+          <p class="text-red-500 text-sm">Username must be longer than 2 characters</p>
+        @enderror
+      </div>
+
       <div>
         <label for="email" class="block text-sm/6 font-medium text-gray-100">Email address</label>
-        <div class="mt-2">
-          <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+        <div class="mt-1">
+          <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('email')}}"/>
         </div>
+        @error('email')
+          <p class="text-red-500 text-sm">Email address must be valid</p>
+        @enderror
       </div>
-
+      
       <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
-          <div class="text-sm">
-            <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Forgot password?</a>
-          </div>
+        <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
+        <div class="mt-1">
+          <input id="password" type="password" name="password" required autocomplete="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
         </div>
-        <div class="mt-2">
-          <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-        </div>
+        @error('password')
+          <p class="text-red-500 text-sm">Password required</p>
+        @enderror
       </div>
-
+      
+      <div>
+        <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-100">Repeat Password</label>
+        <div class="mt-1">
+          <input id="password_confirmation" type="password" name="password_confirmation" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+        </div>
+        @error('password_confirmation')
+          <p class="text-red-500 text-sm">Passwords must match</p>
+        @enderror
+      </div>
+      
       <div>
         <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Sign in</button>
       </div>
     </form>
 
-    <p class="mt-10 text-center text-sm/6 text-gray-400">
-      Not a member?
-      <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Start a 14 day free trial</a>
-    </p>
   </div>
 </div>
 
