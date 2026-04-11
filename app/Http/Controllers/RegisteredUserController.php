@@ -34,11 +34,15 @@ class RegisteredUserController extends Controller
     {
         //authorize
 
+
         //validate
         $attributes = $request->validate([
             'username' => ['required', 'min:3'],
             'email' => ['required', 'email'],
-            'password' => ['required', Password::min(3), 'confirmed']
+            'password' => ['required', Password::min(3), 'confirmed'],
+        ],
+        [
+            'password.confirmed' => "Passwords don't match"
         ]);
 
         //create session

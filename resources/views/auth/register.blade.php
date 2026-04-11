@@ -16,7 +16,7 @@
           <input id="username" type="username" name="username" required autocomplete="username" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('username')}}"/>
         </div>
         @error('username')
-          <p class="text-red-500 text-sm">Username must be longer than 2 characters</p>
+          <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
       </div>
 
@@ -26,7 +26,7 @@
           <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('email')}}"/>
         </div>
         @error('email')
-          <p class="text-red-500 text-sm">Email address must be valid</p>
+          <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
       </div>
       
@@ -36,7 +36,7 @@
           <input id="password" type="password" name="password" required autocomplete="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
         </div>
         @error('password')
-          <p class="text-red-500 text-sm">Password required</p>
+          <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
       </div>
       
@@ -46,7 +46,7 @@
           <input id="password_confirmation" type="password" name="password_confirmation" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
         </div>
         @error('password_confirmation')
-          <p class="text-red-500 text-sm">Passwords must match</p>
+          <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
       </div>
       
