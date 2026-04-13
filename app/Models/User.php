@@ -23,6 +23,14 @@ class User extends Authenticatable
         'password'
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed', // This tells Laravel to hash it automatically!
+        ];
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
