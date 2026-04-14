@@ -54,7 +54,15 @@
         </div>
 
         <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
-            <h3 class="text-lg font-bold text-gray-800 mb-4">Comments</h3>
+            <div class="flex-col">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Comments</h3>
+                @auth
+                <a href="/posts/{{ $post->id }}/comment" class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Add comment</a>
+                @endauth
+                @guest
+                    <p class="text-black">Log in to add a comment!</p>
+                @endguest
+            </div>
 
             <div class="space-y-4">
                 @foreach ($post->comments as $comment)
