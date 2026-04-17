@@ -3,6 +3,11 @@
 
     <div class="max-w-4xl mx-auto mt-8 space-y-8">
         
+        <form action="/users/{{$user->id}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button>Delete User</button>
+        </form>
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div class="bg-gray-50 border-b border-gray-200 px-6 py-4">
                 <h2 class="text-lg font-bold text-gray-800">Account Details</h2>
