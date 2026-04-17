@@ -17,10 +17,15 @@ Route::get('/login', [SessionController::class, 'create'])->name('login.create')
 Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 Route::delete('/session', [SessionController::class, 'destroy']);
 
-
+//Resource
 Route::resource('users', UserController::class);
 Route::resource('posts', PostController::class);
 Route::resource('tags', TagController::class);
 
 Route::get('/posts/{post}/comment', [CommentController::class, 'create']);
 Route::post('/posts/{post}/comment', [CommentController::class, 'store']);
+
+//To do:
+//edit and delete user (if i'm the user i can delete myself)
+//edit and delete post
+//edit and delete comment
