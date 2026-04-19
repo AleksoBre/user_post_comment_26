@@ -66,14 +66,20 @@
 
             <div class="space-y-4">
                 @foreach ($post->comments as $comment)
-                    <div class="bg-white p-4 rounded-md border border-gray-200 shadow-sm">
+                    <div class="relative bg-white p-4 pb-8 rounded-md border border-gray-200 shadow-sm">
                         <p class="text-gray-700 mb-2">{{ $comment->content }}</p>
                         <p class="text-xs text-gray-500">
-                            By: 
-                            <a href="/users/{{ $comment->user->id }}" class="text-blue-500 hover:underline font-medium">
-                                {{ $comment->user->username }}
-                            </a>
+                            By: <a href="/users/{{ $comment->user->id }}" class="text-blue-500 hover:underline font-medium">{{ $comment->user->username }}</a>
                         </p>
+
+                        <div class="absolute bottom-3 right-3 flex items-center gap-2">
+                            <a href="/comments/{{ $comment->id }}/edit" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-2 py-1 rounded transition">Edit</a>
+                            <form action="{{ route('posts.comments.destroy', ['post' => $post, 'comment' => $comment]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1 rounded transition cursor-pointer">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>

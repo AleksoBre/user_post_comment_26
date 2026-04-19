@@ -8,6 +8,8 @@
             @method('DELETE')
             <button>Delete User</button>
         </form>
+        {{-- OVO DUGME SE POJAVLJUJE SAMO AKO SAM ULOGOVAN KAO TAJ USER --}}
+        <a href="/users/{{ $user->id }}/edit">Edit User</a>
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div class="bg-gray-50 border-b border-gray-200 px-6 py-4">
                 <h2 class="text-lg font-bold text-gray-800">Account Details</h2>

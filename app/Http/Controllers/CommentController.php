@@ -35,8 +35,14 @@ class CommentController extends Controller
         //
     }
 
-    public function destroy(Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
-        //
+        if ($comment->post_id !== $post->id) {
+            abort(404);
+        }
+
+        $comment->delete();
+
+        return redirect("/posts/{$post->id}");
     }
 }
