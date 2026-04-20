@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +23,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('edit_post', function(User $user, Post $post) {
+            return $post->user->is($user);
+        });
+        Gate::define('delete_post', function(User $user, Post $post) {
+            return $post->user->is($user);
+        });
+
+        Gate::define('edit_comment', function(User $user, Comment $comment) {
+            return $comment->user->is($user);
+        });
+        Gate::define('delete_comment', function(User $user, Comment $comment) {
+            return $comment->user->is($user);
+        });
+
+        Gate::define('edit_user', function(User $authenticatedUser, User $profileUser) {
+            return $authenticatedUser->is($profileUser);
+        });
+        
     }
 }

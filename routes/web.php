@@ -29,4 +29,10 @@ Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name(
 Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //To do:
+//show buttons to edit or delete only if i'm the user/author of post/author of comment
+    //gates
+    //edit_user & delete_user (can do only if i'm that user)
+    //edit_post & delete_post (can do only if i'm the author)
+    //edit_comment & delete_comment (can do only if i'm the author)
+
 //authorization for users, posts, comments
