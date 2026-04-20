@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //Post
         Gate::define('edit_post', function(User $user, Post $post) {
             return $post->user->is($user);
         });
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
             return $post->user->is($user);
         });
 
+        //Comment
         Gate::define('edit_comment', function(User $user, Comment $comment) {
             return $comment->user->is($user);
         });
@@ -37,7 +39,11 @@ class AppServiceProvider extends ServiceProvider
             return $comment->user->is($user);
         });
 
+        //User
         Gate::define('edit_user', function(User $authenticatedUser, User $profileUser) {
+            return $authenticatedUser->is($profileUser);
+        });
+        Gate::define('delete_user', function(User $authenticatedUser, User $profileUser) {
             return $authenticatedUser->is($profileUser);
         });
         

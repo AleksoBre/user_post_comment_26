@@ -34,7 +34,7 @@
                 @endguest
                 @auth
                     <div>
-                        <p class="text-white">User: {{Auth::user()->username}}</p>
+                        <p class="text-white">Logged in: {{Auth::user()->username}}</p>
                         <form action="/session" method="post">
                             @csrf
                             @method('DELETE')

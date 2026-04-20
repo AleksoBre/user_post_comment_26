@@ -8,9 +8,10 @@
             <div class="bg-gray-50 border-b border-gray-200 px-6 py-4 flex justify-between items-center">
                 <h2 class="text-lg font-bold text-gray-800">Account Details</h2>
                 
-                {{-- Action Buttons --}}
+
                 <div class="flex items-center space-x-3">
-                    {{-- Edit Button --}}
+
+                    @can('edit_user', $user)
                     <a href="/users/{{ $user->id }}/edit" 
                     title="Edit Profile"
                     class="text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 p-2 rounded-lg transition-colors duration-200 border border-blue-100">
@@ -18,8 +19,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                         </svg>
                     </a>
+                    @endcan
 
-                    {{-- Delete Button --}}
+                    @can('delete_user', $user)
                     <form action="/users/{{$user->id}}" method="post" onsubmit="return confirm('Are you sure?');">
                         @csrf
                         @method('DELETE')
@@ -29,6 +31,7 @@
                             </svg>
                         </button>
                     </form>
+                    @endcan
                 </div>
             </div>
             <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">

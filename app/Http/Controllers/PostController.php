@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -33,7 +34,7 @@ class PostController extends Controller
 
         //create post
         Post::create([
-            'user_id' => 5,
+            'user_id' => Auth::user()->id,
             'content' => $validated['content']
         ]);
 

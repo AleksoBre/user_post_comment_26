@@ -6,11 +6,14 @@
             </h1>
 
             <div class="flex items-center gap-x-2">
+                @can('edit_post', $post)
                 <a href="/posts/{{ $post->id }}/edit" 
                 class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                     Edit
                 </a>
+                @endcan
 
+                @can('delete_post', $post)
                 <form method="POST" action="/posts/{{ $post->id }}" class="inline-flex">
                     @csrf
                     @method('DELETE')
@@ -19,6 +22,7 @@
                         Delete
                     </button>
                 </form>
+                @endcan
             </div>
         </div>
     </x-slot:heading>
@@ -73,12 +77,16 @@
                         </p>
 
                         <div class="absolute bottom-3 right-3 flex items-center gap-2">
+                            @can('edit_comment', $comment)
                             <a href="{{ route('comments.edit', [$comment]) }}" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-2 py-1 rounded transition">Edit</a>
+                            @endcan
+                            @can('delete_comment', $comment)
                             <form action="{{ route('comments.destroy', ['post' => $post, 'comment' => $comment]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1 rounded transition cursor-pointer">Delete</button>
                             </form>
+                            @endcan
                         </div>
                     </div>
                 @endforeach
