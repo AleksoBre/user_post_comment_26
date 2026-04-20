@@ -24,7 +24,9 @@ Route::resource('tags', TagController::class);
 
 Route::get('/posts/{post}/comment', [CommentController::class, 'create']);
 Route::post('/posts/{post}/comment', [CommentController::class, 'store']);
-Route::delete('/posts/{post}/comments/{comment}', [CommentController::class, 'destroy'])->name('posts.comments.destroy');
+Route::get('/comments/{comment}', [CommentController::class, 'edit'])->name('comments.edit');
+Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //To do:
 //edit and delete user (if i'm the user i can delete myself)

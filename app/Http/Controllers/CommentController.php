@@ -29,10 +29,17 @@ class CommentController extends Controller
         //redirect
         return redirect("/posts/{$post->id}");
     }
+    public function edit(Comment $comment) {
+        return view('comments.edit', compact('comment'));
+    }
 
     public function update(Request $request, Comment $comment)
     {
-        //
+        $request->validate(['content' => ['required', 'min:3']]);
+
+        $comment->update(['content' => $request['content']]);
+
+        return redirect("/posts/{$comment->post->id}");
     }
 
     public function destroy(Post $post, Comment $comment)
