@@ -29,6 +29,4 @@ Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name(
 Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //To do:
-//edit and delete user (if i'm the user i can delete myself)
-//edit and delete post
-//edit and delete comment
+//authorization for users, posts, comments
