@@ -11,41 +11,53 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home');
 
 //Auth
-Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');
-Route::post('/register', [RegisteredUserController::class, 'store'])->name('register.store');
-Route::get('/login', [SessionController::class, 'create'])->name('login.create');
-Route::post('/login', [SessionController::class, 'store'])->name('login.store');
-Route::delete('/session', [SessionController::class, 'destroy']);
-
+Route::middleware('guest')->group(function() {
+    Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');
+    Route::post('/register', [RegisteredUserController::class, 'store'])->name('register.store');
+    Route::get('/login', [SessionController::class, 'create'])->name('login.create');
+    Route::post('/login', [SessionController::class, 'store'])->name('login.store');
+    });
+Route::delete('/session', [SessionController::class, 'destroy'])->middleware('auth');
+    
 
 Route::controller(UserController::class)->group(function() {
     Route::get('/users', 'index')->name('users.index');
     Route::get('/users/{user}', 'show')->name('users.show');
-    Route::get('/users/{user}/edit', 'edit')->name('users.edit')->can('edit_user','user');
-    Route::patch('/users/{user}', 'update')->name('users.update')->can('edit_user', 'user');
-    Route::delete('/users/{user}', 'destroy')->name('users.destroy')->can('delete_user', 'user');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/users/{user}/edit', 'edit')->can('edit-user', 'user')->name('users.edit');
+        Route::patch('/users/{user}', 'update')->can('edit-user', 'user')->name('users.update');
+        Route::delete('/users/{user}', 'destroy')->can('delete-user', 'user')->name('users.destroy');
+    });
 });
 
 Route::controller(PostController::class)->group(function() {
     Route::get('/posts', 'index')->name('posts.index');
-    Route::get('/posts/create', 'create')->name('posts.create');
-    Route::post('/posts/{post}', 'store')->name('posts.store');
     Route::get('/posts/{post}', 'show')->name('posts.show');
-    Route::get('/posts/{post}/edit', 'edit')->name('posts.edit');
-    Route::patch('/posts/{post}', 'update')->name('posts.update');
-    Route::delete('/posts/{post}', 'destroy')->name('posts.destroy');
+    
+    Route::middleware('auth')->group(function () {
+        Route::get('/posts/create', 'create')->name('posts.create');
+        Route::post('/posts', 'store')->name('posts.store');
+
+        Route::get('/posts/{post}/edit', 'edit')->can('edit-post', 'post')->name('posts.edit');
+        Route::patch('/posts/{post}', 'update')->can('edit-post', 'post')->name('posts.update');
+        Route::delete('/posts/{post}', 'destroy')->can('delete-post', 'post')->name('posts.destroy');
+    });
+});
+
+Route::controller(CommentController::class)->group(function() {
+    Route::middleware('auth')->group(function () {
+        Route::get('/posts/{post}/comment', 'create')->name('comments.create');
+        Route::post('/posts/{post}/comment', 'store')->name('comments.store');
+
+        Route::get('/comments/{comment}', 'edit')->can('edit-comment', 'comment')->name('comments.edit');
+        Route::patch('/comments/{comment}', 'update')->can('edit-comment', 'comment')->name('comments.update');
+        Route::delete('/comments/{comment}', 'destroy')->can('delete-comment', 'comment')->name('comments.destroy');
+    });
 });
 
 Route::resource('tags', TagController::class);
 
-Route::controller(CommentController::class)->group(function() {
-    Route::get('/posts/{post}/comment', 'create')->name('comments.create');
-    Route::post('/posts/{post}/comment', 'store')->name('comments.store');
-    Route::get('/comments/{comment}', 'edit')->name('comments.edit');
-    Route::patch('/comments/{comment}', 'update')->name('comments.update');
-    Route::delete('/posts/{post}/{comment}', 'destroy')->name('comments.destroy');
-
-});
 
 //To do:
 

@@ -11,7 +11,7 @@
 
                 <div class="flex items-center space-x-3">
 
-                    @can('edit_user', $user)
+                    @can('edit-user', $user)
                     <a href="/users/{{ $user->id }}/edit" 
                     title="Edit Profile"
                     class="text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 p-2 rounded-lg transition-colors duration-200 border border-blue-100">
@@ -21,7 +21,7 @@
                     </a>
                     @endcan
 
-                    @can('delete_user', $user)
+                    @can('delete-user', $user)
                     <form action="/users/{{$user->id}}" method="post" onsubmit="return confirm('Are you sure?');">
                         @csrf
                         @method('DELETE')
