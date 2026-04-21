@@ -17,22 +17,37 @@ Route::get('/login', [SessionController::class, 'create'])->name('login.create')
 Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 Route::delete('/session', [SessionController::class, 'destroy']);
 
-//Resource
-Route::resource('users', UserController::class);
-Route::resource('posts', PostController::class);
+
+Route::controller(UserController::class)->group(function() {
+    Route::get('/users', 'index')->name('users.index');
+    Route::get('/users/{user}', 'show')->name('users.show');
+    Route::get('/users/{user}/edit', 'edit')->name('users.edit')->can('edit_user','user');
+    Route::patch('/users/{user}', 'update')->name('users.update')->can('edit_user', 'user');
+    Route::delete('/users/{user}', 'destroy')->name('users.destroy')->can('delete_user', 'user');
+});
+
+Route::controller(PostController::class)->group(function() {
+    Route::get('/posts', 'index')->name('posts.index');
+    Route::get('/posts/create', 'create')->name('posts.create');
+    Route::post('/posts/{post}', 'store')->name('posts.store');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+    Route::get('/posts/{post}/edit', 'edit')->name('posts.edit');
+    Route::patch('/posts/{post}', 'update')->name('posts.update');
+    Route::delete('/posts/{post}', 'destroy')->name('posts.destroy');
+});
+
 Route::resource('tags', TagController::class);
 
-Route::get('/posts/{post}/comment', [CommentController::class, 'create']);
-Route::post('/posts/{post}/comment', [CommentController::class, 'store']);
-Route::get('/comments/{comment}', [CommentController::class, 'edit'])->name('comments.edit');
-Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
-Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::controller(CommentController::class)->group(function() {
+    Route::get('/posts/{post}/comment', 'create')->name('comments.create');
+    Route::post('/posts/{post}/comment', 'store')->name('comments.store');
+    Route::get('/comments/{comment}', 'edit')->name('comments.edit');
+    Route::patch('/comments/{comment}', 'update')->name('comments.update');
+    Route::delete('/posts/{post}/{comment}', 'destroy')->name('comments.destroy');
+
+});
 
 //To do:
-//show buttons to edit or delete only if i'm the user/author of post/author of comment
-    //gates
-    //edit_user & delete_user (can do only if i'm that user)
-    //edit_post & delete_post & create_post (can do only if i'm the author)
-    //edit_comment & delete_comment & create_post (can do only if i'm the author)
 
 //authorization for users, posts, comments
+//crud for tags
