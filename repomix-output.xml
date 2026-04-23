@@ -1,0 +1,3933 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.editorconfig
+.env.example
+.gitattributes
+.gitignore
+app/Http/Controllers/CommentController.php
+app/Http/Controllers/Controller.php
+app/Http/Controllers/PostController.php
+app/Http/Controllers/RegisteredUserController.php
+app/Http/Controllers/SessionController.php
+app/Http/Controllers/TagController.php
+app/Http/Controllers/UserController.php
+app/Models/Comment.php
+app/Models/Post.php
+app/Models/Tag.php
+app/Models/User.php
+app/Providers/AppServiceProvider.php
+artisan
+bootstrap/app.php
+bootstrap/cache/.gitignore
+bootstrap/providers.php
+composer.json
+config/app.php
+config/auth.php
+config/cache.php
+config/database.php
+config/filesystems.php
+config/logging.php
+config/mail.php
+config/queue.php
+config/services.php
+config/session.php
+database/.gitignore
+database/factories/CommentFactory.php
+database/factories/PostFactory.php
+database/factories/TagFactory.php
+database/factories/UserFactory.php
+database/migrations/0001_01_01_000000_create_users_table.php
+database/migrations/0001_01_01_000001_create_cache_table.php
+database/migrations/0001_01_01_000002_create_jobs_table.php
+database/migrations/2026_03_11_095042_create_posts_table.php
+database/migrations/2026_03_11_100427_create_comments_table.php
+database/migrations/2026_03_12_104345_create_tags_table.php
+database/migrations/2026_03_12_105048_create_post_tag_table.php
+database/seeders/DatabaseSeeder.php
+package.json
+phpunit.xml
+public/.htaccess
+public/favicon.ico
+public/index.php
+public/robots.txt
+README.md
+resources/css/app.css
+resources/js/app.js
+resources/js/bootstrap.js
+resources/views/auth/login.blade.php
+resources/views/auth/register.blade.php
+resources/views/comments/create.blade.php
+resources/views/comments/edit.blade.php
+resources/views/components/layout.blade.php
+resources/views/components/nav-link.blade.php
+resources/views/home.blade.php
+resources/views/posts/create.blade.php
+resources/views/posts/edit.blade.php
+resources/views/posts/index.blade.php
+resources/views/posts/show.blade.php
+resources/views/tags/show.blade.php
+resources/views/users/edit.blade.php
+resources/views/users/index.blade.php
+resources/views/users/show.blade.php
+routes/console.php
+routes/web.php
+storage/app/.gitignore
+storage/app/private/.gitignore
+storage/app/public/.gitignore
+storage/debugbar/.gitignore
+storage/framework/.gitignore
+storage/framework/cache/.gitignore
+storage/framework/cache/data/.gitignore
+storage/framework/sessions/.gitignore
+storage/framework/testing/.gitignore
+storage/framework/views/.gitignore
+storage/logs/.gitignore
+tests/Feature/ExampleTest.php
+tests/Pest.php
+tests/TestCase.php
+tests/Unit/ExampleTest.php
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".editorconfig">
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[compose.yaml]
+indent_size = 4
+</file>
+
+<file path=".env.example">
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+APP_LOCALE=en
+APP_FALLBACK_LOCALE=en
+APP_FAKER_LOCALE=en_US
+
+APP_MAINTENANCE_DRIVER=file
+# APP_MAINTENANCE_STORE=database
+
+# PHP_CLI_SERVER_WORKERS=4
+
+BCRYPT_ROUNDS=12
+
+LOG_CHANNEL=stack
+LOG_STACK=single
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=mariadb
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=user_posts_comments_26
+DB_USERNAME=root
+DB_PASSWORD=
+
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+SESSION_PATH=/
+SESSION_DOMAIN=null
+
+BROADCAST_CONNECTION=log
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
+
+CACHE_STORE=database
+# CACHE_PREFIX=
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_CLIENT=phpredis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=log
+MAIL_SCHEME=null
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+VITE_APP_NAME="${APP_NAME}"
+</file>
+
+<file path=".gitattributes">
+* text=auto eol=lf
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore
+</file>
+
+<file path=".gitignore">
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
+</file>
+
+<file path="app/Http/Controllers/Controller.php">
+<?php
+
+namespace App\Http\Controllers;
+
+abstract class Controller
+{
+    //
+}
+</file>
+
+<file path="app/Http/Controllers/TagController.php">
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Tag;
+use Illuminate\Http\Request;
+
+class TagController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Tag $tag)
+    {
+        return view('tags.show', [
+            'tag' => $tag->load([
+                'posts' => fn($query) => $query->with('user')->withCount('comments')
+            ])
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Tag $tag)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Tag $tag)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Tag $tag)
+    {
+        //
+    }
+}
+</file>
+
+<file path="artisan">
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// Register the Composer autoloader...
+require __DIR__.'/vendor/autoload.php';
+
+// Bootstrap Laravel and handle the command...
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+$status = $app->handleCommand(new ArgvInput);
+
+exit($status);
+</file>
+
+<file path="bootstrap/app.php">
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware): void {
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions): void {
+        //
+    })->create();
+</file>
+
+<file path="bootstrap/cache/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="bootstrap/providers.php">
+<?php
+
+return [
+    App\Providers\AppServiceProvider::class,
+];
+</file>
+
+<file path="config/app.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application, which will be used when the
+    | framework needs to place the application's name in a notification or
+    | other UI elements where an application name needs to be displayed.
+    |
+    */
+
+    'name' => env('APP_NAME', 'Laravel'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services the application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'env' => env('APP_ENV', 'production'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in debug mode, detailed error messages with
+    | stack traces will be shown on every error that occurs within your
+    | application. If disabled, a simple generic error page is shown.
+    |
+    */
+
+    'debug' => (bool) env('APP_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to properly generate URLs when using
+    | the Artisan command line tool. You should set this to the root of
+    | the application so that it's available within Artisan commands.
+    |
+    */
+
+    'url' => env('APP_URL', 'http://localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Timezone
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default timezone for your application, which
+    | will be used by the PHP date and date-time functions. The timezone
+    | is set to "UTC" by default as it is suitable for most use cases.
+    |
+    */
+
+    'timezone' => 'UTC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locale Configuration
+    |--------------------------------------------------------------------------
+    |
+    | The application locale determines the default locale that will be used
+    | by Laravel's translation / localization methods. This option can be
+    | set to any locale for which you plan to have translation strings.
+    |
+    */
+
+    'locale' => env('APP_LOCALE', 'en'),
+
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+
+    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is utilized by Laravel's encryption services and should be set
+    | to a random, 32 character string to ensure that all encrypted values
+    | are secure. You should do this prior to deploying the application.
+    |
+    */
+
+    'cipher' => 'AES-256-CBC',
+
+    'key' => env('APP_KEY'),
+
+    'previous_keys' => [
+        ...array_filter(
+            explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
+        ),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance Mode Driver
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options determine the driver used to determine and
+    | manage Laravel's "maintenance mode" status. The "cache" driver will
+    | allow maintenance mode to be controlled across multiple machines.
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
+
+    'maintenance' => [
+        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
+        'store' => env('APP_MAINTENANCE_STORE', 'database'),
+    ],
+
+];
+</file>
+
+<file path="config/auth.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Defaults
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the default authentication "guard" and password
+    | reset "broker" for your application. You may change these values
+    | as required, but they're a perfect start for most applications.
+    |
+    */
+
+    'defaults' => [
+        'guard' => env('AUTH_GUARD', 'web'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards
+    |--------------------------------------------------------------------------
+    |
+    | Next, you may define every authentication guard for your application.
+    | Of course, a great default configuration has been defined for you
+    | which utilizes session storage plus the Eloquent user provider.
+    |
+    | All authentication guards have a user provider, which defines how the
+    | users are actually retrieved out of your database or other storage
+    | system used by the application. Typically, Eloquent is utilized.
+    |
+    | Supported: "session"
+    |
+    */
+
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Providers
+    |--------------------------------------------------------------------------
+    |
+    | All authentication guards have a user provider, which defines how the
+    | users are actually retrieved out of your database or other storage
+    | system used by the application. Typically, Eloquent is utilized.
+    |
+    | If you have multiple user tables or models you may configure multiple
+    | providers to represent the model / table. These providers may then
+    | be assigned to any extra authentication guards you have defined.
+    |
+    | Supported: "database", "eloquent"
+    |
+    */
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resetting Passwords
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options specify the behavior of Laravel's password
+    | reset functionality, including the table utilized for token storage
+    | and the user provider that is invoked to actually retrieve users.
+    |
+    | The expiry time is the number of minutes that each reset token will be
+    | considered valid. This security feature keeps tokens short-lived so
+    | they have less time to be guessed. You may change this as needed.
+    |
+    | The throttle setting is the number of seconds a user must wait before
+    | generating more password reset tokens. This prevents the user from
+    | quickly generating a very large amount of password reset tokens.
+    |
+    */
+
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Password Confirmation Timeout
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the number of seconds before a password confirmation
+    | window expires and users are asked to re-enter their password via the
+    | confirmation screen. By default, the timeout lasts for three hours.
+    |
+    */
+
+    'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+
+];
+</file>
+
+<file path="config/cache.php">
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Cache Store
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default cache store that will be used by the
+    | framework. This connection is utilized if another isn't explicitly
+    | specified when running a cache operation inside the application.
+    |
+    */
+
+    'default' => env('CACHE_STORE', 'database'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Stores
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define all of the cache "stores" for your application as
+    | well as their drivers. You may even define multiple stores for the
+    | same cache driver to group types of items stored in your caches.
+    |
+    | Supported drivers: "array", "database", "file", "memcached",
+    |                    "redis", "dynamodb", "octane",
+    |                    "failover", "null"
+    |
+    */
+
+    'stores' => [
+
+        'array' => [
+            'driver' => 'array',
+            'serialize' => false,
+        ],
+
+        'database' => [
+            'driver' => 'database',
+            'connection' => env('DB_CACHE_CONNECTION'),
+            'table' => env('DB_CACHE_TABLE', 'cache'),
+            'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'),
+            'lock_table' => env('DB_CACHE_LOCK_TABLE'),
+        ],
+
+        'file' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/data'),
+            'lock_path' => storage_path('framework/cache/data'),
+        ],
+
+        'memcached' => [
+            'driver' => 'memcached',
+            'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
+            'sasl' => [
+                env('MEMCACHED_USERNAME'),
+                env('MEMCACHED_PASSWORD'),
+            ],
+            'options' => [
+                // Memcached::OPT_CONNECT_TIMEOUT => 2000,
+            ],
+            'servers' => [
+                [
+                    'host' => env('MEMCACHED_HOST', '127.0.0.1'),
+                    'port' => env('MEMCACHED_PORT', 11211),
+                    'weight' => 100,
+                ],
+            ],
+        ],
+
+        'redis' => [
+            'driver' => 'redis',
+            'connection' => env('REDIS_CACHE_CONNECTION', 'cache'),
+            'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'),
+        ],
+
+        'dynamodb' => [
+            'driver' => 'dynamodb',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
+            'endpoint' => env('DYNAMODB_ENDPOINT'),
+        ],
+
+        'octane' => [
+            'driver' => 'octane',
+        ],
+
+        'failover' => [
+            'driver' => 'failover',
+            'stores' => [
+                'database',
+                'array',
+            ],
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Key Prefix
+    |--------------------------------------------------------------------------
+    |
+    | When utilizing the APC, database, memcached, Redis, and DynamoDB cache
+    | stores, there might be other applications using the same cache. For
+    | that reason, you may prefix every cache key to avoid collisions.
+    |
+    */
+
+    'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'),
+
+];
+</file>
+
+<file path="config/database.php">
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which of the database connections below you wish
+    | to use as your default connection for database operations. This is
+    | the connection which will be utilized unless another connection
+    | is explicitly specified when you execute a query / statement.
+    |
+    */
+
+    'default' => env('DB_CONNECTION', 'sqlite'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database Connections
+    |--------------------------------------------------------------------------
+    |
+    | Below are all of the database connections defined for your application.
+    | An example configuration is provided for each database system which
+    | is supported by Laravel. You're free to add / remove connections.
+    |
+    */
+
+    'connections' => [
+
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'url' => env('DB_URL'),
+            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'prefix' => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+            'busy_timeout' => null,
+            'journal_mode' => null,
+            'synchronous' => null,
+            'transaction_mode' => 'DEFERRED',
+        ],
+
+        'mysql' => [
+            'driver' => 'mysql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                (PHP_VERSION_ID >= 80500 ? \Pdo\Mysql::ATTR_SSL_CA : \PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'mariadb' => [
+            'driver' => 'mariadb',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                (PHP_VERSION_ID >= 80500 ? \Pdo\Mysql::ATTR_SSL_CA : \PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => env('DB_SSLMODE', 'prefer'),
+        ],
+
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Migration Repository Table
+    |--------------------------------------------------------------------------
+    |
+    | This table keeps track of all the migrations that have already run for
+    | your application. Using this information, we can determine which of
+    | the migrations on disk haven't actually been run on the database.
+    |
+    */
+
+    'migrations' => [
+        'table' => 'migrations',
+        'update_date_on_publish' => true,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Redis Databases
+    |--------------------------------------------------------------------------
+    |
+    | Redis is an open source, fast, and advanced key-value store that also
+    | provides a richer body of commands than a typical key-value system
+    | such as Memcached. You may define your connection settings here.
+    |
+    */
+
+    'redis' => [
+
+        'client' => env('REDIS_CLIENT', 'phpredis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-database-'),
+            'persistent' => env('REDIS_PERSISTENT', false),
+        ],
+
+        'default' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),
+            'max_retries' => env('REDIS_MAX_RETRIES', 3),
+            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),
+            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
+            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
+        ],
+
+        'cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_CACHE_DB', '1'),
+            'max_retries' => env('REDIS_MAX_RETRIES', 3),
+            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),
+            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
+            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
+        ],
+
+    ],
+
+];
+</file>
+
+<file path="config/filesystems.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default filesystem disk that should be used
+    | by the framework. The "local" disk, as well as a variety of cloud
+    | based disks are available to your application for file storage.
+    |
+    */
+
+    'default' => env('FILESYSTEM_DISK', 'local'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filesystem Disks
+    |--------------------------------------------------------------------------
+    |
+    | Below you may configure as many filesystem disks as necessary, and you
+    | may even configure multiple disks for the same driver. Examples for
+    | most supported storage drivers are configured here for reference.
+    |
+    | Supported drivers: "local", "ftp", "sftp", "s3"
+    |
+    */
+
+    'disks' => [
+
+        'local' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),
+            'serve' => true,
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        's3' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL'),
+            'endpoint' => env('AWS_ENDPOINT'),
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
+            'report' => false,
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Symbolic Links
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the symbolic links that will be created when the
+    | `storage:link` Artisan command is executed. The array keys should be
+    | the locations of the links and the values should be their targets.
+    |
+    */
+
+    'links' => [
+        public_path('storage') => storage_path('app/public'),
+    ],
+
+];
+</file>
+
+<file path="config/logging.php">
+<?php
+
+use Monolog\Handler\NullHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Processor\PsrLogMessageProcessor;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the default log channel that is utilized to write
+    | messages to your logs. The value provided here should match one of
+    | the channels present in the list of "channels" configured below.
+    |
+    */
+
+    'default' => env('LOG_CHANNEL', 'stack'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Deprecations Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the log channel that should be used to log warnings
+    | regarding deprecated PHP and library features. This allows you to get
+    | your application ready for upcoming major versions of dependencies.
+    |
+    */
+
+    'deprecations' => [
+        'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
+        'trace' => env('LOG_DEPRECATIONS_TRACE', false),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Log Channels
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log channels for your application. Laravel
+    | utilizes the Monolog PHP logging library, which includes a variety
+    | of powerful log handlers and formatters that you're free to use.
+    |
+    | Available drivers: "single", "daily", "slack", "syslog",
+    |                    "errorlog", "monolog", "custom", "stack"
+    |
+    */
+
+    'channels' => [
+
+        'stack' => [
+            'driver' => 'stack',
+            'channels' => explode(',', (string) env('LOG_STACK', 'single')),
+            'ignore_exceptions' => false,
+        ],
+
+        'single' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+
+        'daily' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' => true,
+        ],
+
+        'slack' => [
+            'driver' => 'slack',
+            'url' => env('LOG_SLACK_WEBHOOK_URL'),
+            'username' => env('LOG_SLACK_USERNAME', 'Laravel Log'),
+            'emoji' => env('LOG_SLACK_EMOJI', ':boom:'),
+            'level' => env('LOG_LEVEL', 'critical'),
+            'replace_placeholders' => true,
+        ],
+
+        'papertrail' => [
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
+            'handler_with' => [
+                'host' => env('PAPERTRAIL_URL'),
+                'port' => env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+            ],
+            'processors' => [PsrLogMessageProcessor::class],
+        ],
+
+        'stderr' => [
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => StreamHandler::class,
+            'handler_with' => [
+                'stream' => 'php://stderr',
+            ],
+            'formatter' => env('LOG_STDERR_FORMATTER'),
+            'processors' => [PsrLogMessageProcessor::class],
+        ],
+
+        'syslog' => [
+            'driver' => 'syslog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER),
+            'replace_placeholders' => true,
+        ],
+
+        'errorlog' => [
+            'driver' => 'errorlog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+
+        'null' => [
+            'driver' => 'monolog',
+            'handler' => NullHandler::class,
+        ],
+
+        'emergency' => [
+            'path' => storage_path('logs/laravel.log'),
+        ],
+
+    ],
+
+];
+</file>
+
+<file path="config/mail.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Mailer
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default mailer that is used to send all email
+    | messages unless another mailer is explicitly specified when sending
+    | the message. All additional mailers can be configured within the
+    | "mailers" array. Examples of each type of mailer are provided.
+    |
+    */
+
+    'default' => env('MAIL_MAILER', 'log'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mailer Configurations
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure all of the mailers used by your application plus
+    | their respective settings. Several examples have been configured for
+    | you and you are free to add your own as your application requires.
+    |
+    | Laravel supports a variety of mail "transport" drivers that can be used
+    | when delivering an email. You may specify which one you're using for
+    | your mailers below. You may also add additional mailers if needed.
+    |
+    | Supported: "smtp", "sendmail", "mailgun", "ses", "ses-v2",
+    |            "postmark", "resend", "log", "array",
+    |            "failover", "roundrobin"
+    |
+    */
+
+    'mailers' => [
+
+        'smtp' => [
+            'transport' => 'smtp',
+            'scheme' => env('MAIL_SCHEME'),
+            'url' => env('MAIL_URL'),
+            'host' => env('MAIL_HOST', '127.0.0.1'),
+            'port' => env('MAIL_PORT', 2525),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        'ses' => [
+            'transport' => 'ses',
+        ],
+
+        'postmark' => [
+            'transport' => 'postmark',
+            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
+            // 'client' => [
+            //     'timeout' => 5,
+            // ],
+        ],
+
+        'resend' => [
+            'transport' => 'resend',
+        ],
+
+        'sendmail' => [
+            'transport' => 'sendmail',
+            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+        ],
+
+        'log' => [
+            'transport' => 'log',
+            'channel' => env('MAIL_LOG_CHANNEL'),
+        ],
+
+        'array' => [
+            'transport' => 'array',
+        ],
+
+        'failover' => [
+            'transport' => 'failover',
+            'mailers' => [
+                'smtp',
+                'log',
+            ],
+            'retry_after' => 60,
+        ],
+
+        'roundrobin' => [
+            'transport' => 'roundrobin',
+            'mailers' => [
+                'ses',
+                'postmark',
+            ],
+            'retry_after' => 60,
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Global "From" Address
+    |--------------------------------------------------------------------------
+    |
+    | You may wish for all emails sent by your application to be sent from
+    | the same address. Here you may specify a name and address that is
+    | used globally for all emails that are sent by your application.
+    |
+    */
+
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
+];
+</file>
+
+<file path="config/queue.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Queue Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Laravel's queue supports a variety of backends via a single, unified
+    | API, giving you convenient access to each backend using identical
+    | syntax for each. The default queue connection is defined below.
+    |
+    */
+
+    'default' => env('QUEUE_CONNECTION', 'database'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queue Connections
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the connection options for every queue backend
+    | used by your application. An example configuration is provided for
+    | each backend supported by Laravel. You're also free to add more.
+    |
+    | Drivers: "sync", "database", "beanstalkd", "sqs", "redis",
+    |          "deferred", "background", "failover", "null"
+    |
+    */
+
+    'connections' => [
+
+        'sync' => [
+            'driver' => 'sync',
+        ],
+
+        'database' => [
+            'driver' => 'database',
+            'connection' => env('DB_QUEUE_CONNECTION'),
+            'table' => env('DB_QUEUE_TABLE', 'jobs'),
+            'queue' => env('DB_QUEUE', 'default'),
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
+            'after_commit' => false,
+        ],
+
+        'beanstalkd' => [
+            'driver' => 'beanstalkd',
+            'host' => env('BEANSTALKD_QUEUE_HOST', 'localhost'),
+            'queue' => env('BEANSTALKD_QUEUE', 'default'),
+            'retry_after' => (int) env('BEANSTALKD_QUEUE_RETRY_AFTER', 90),
+            'block_for' => 0,
+            'after_commit' => false,
+        ],
+
+        'sqs' => [
+            'driver' => 'sqs',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
+            'queue' => env('SQS_QUEUE', 'default'),
+            'suffix' => env('SQS_SUFFIX'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'after_commit' => false,
+        ],
+
+        'redis' => [
+            'driver' => 'redis',
+            'connection' => env('REDIS_QUEUE_CONNECTION', 'default'),
+            'queue' => env('REDIS_QUEUE', 'default'),
+            'retry_after' => (int) env('REDIS_QUEUE_RETRY_AFTER', 90),
+            'block_for' => null,
+            'after_commit' => false,
+        ],
+
+        'deferred' => [
+            'driver' => 'deferred',
+        ],
+
+        'background' => [
+            'driver' => 'background',
+        ],
+
+        'failover' => [
+            'driver' => 'failover',
+            'connections' => [
+                'database',
+                'deferred',
+            ],
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Job Batching
+    |--------------------------------------------------------------------------
+    |
+    | The following options configure the database and table that store job
+    | batching information. These options can be updated to any database
+    | connection and table which has been defined by your application.
+    |
+    */
+
+    'batching' => [
+        'database' => env('DB_CONNECTION', 'sqlite'),
+        'table' => 'job_batches',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Failed Queue Jobs
+    |--------------------------------------------------------------------------
+    |
+    | These options configure the behavior of failed queue job logging so you
+    | can control how and where failed jobs are stored. Laravel ships with
+    | support for storing failed jobs in a simple file or in a database.
+    |
+    | Supported drivers: "database-uuids", "dynamodb", "file", "null"
+    |
+    */
+
+    'failed' => [
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
+        'database' => env('DB_CONNECTION', 'sqlite'),
+        'table' => 'failed_jobs',
+    ],
+
+];
+</file>
+
+<file path="config/services.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Third Party Services
+    |--------------------------------------------------------------------------
+    |
+    | This file is for storing the credentials for third party services such
+    | as Mailgun, Postmark, AWS and more. This file provides the de facto
+    | location for this type of information, allowing packages to have
+    | a conventional file to locate the various service credentials.
+    |
+    */
+
+    'postmark' => [
+        'key' => env('POSTMARK_API_KEY'),
+    ],
+
+    'resend' => [
+        'key' => env('RESEND_API_KEY'),
+    ],
+
+    'ses' => [
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+
+    'slack' => [
+        'notifications' => [
+            'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
+            'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
+        ],
+    ],
+
+];
+</file>
+
+<file path="config/session.php">
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Session Driver
+    |--------------------------------------------------------------------------
+    |
+    | This option determines the default session driver that is utilized for
+    | incoming requests. Laravel supports a variety of storage options to
+    | persist session data. Database storage is a great default choice.
+    |
+    | Supported: "file", "cookie", "database", "memcached",
+    |            "redis", "dynamodb", "array"
+    |
+    */
+
+    'driver' => env('SESSION_DRIVER', 'database'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Lifetime
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the number of minutes that you wish the session
+    | to be allowed to remain idle before it expires. If you want them
+    | to expire immediately when the browser is closed then you may
+    | indicate that via the expire_on_close configuration option.
+    |
+    */
+
+    'lifetime' => (int) env('SESSION_LIFETIME', 120),
+
+    'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Encryption
+    |--------------------------------------------------------------------------
+    |
+    | This option allows you to easily specify that all of your session data
+    | should be encrypted before it's stored. All encryption is performed
+    | automatically by Laravel and you may use the session like normal.
+    |
+    */
+
+    'encrypt' => env('SESSION_ENCRYPT', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session File Location
+    |--------------------------------------------------------------------------
+    |
+    | When utilizing the "file" session driver, the session files are placed
+    | on disk. The default storage location is defined here; however, you
+    | are free to provide another location where they should be stored.
+    |
+    */
+
+    'files' => storage_path('framework/sessions'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Database Connection
+    |--------------------------------------------------------------------------
+    |
+    | When using the "database" or "redis" session drivers, you may specify a
+    | connection that should be used to manage these sessions. This should
+    | correspond to a connection in your database configuration options.
+    |
+    */
+
+    'connection' => env('SESSION_CONNECTION'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Database Table
+    |--------------------------------------------------------------------------
+    |
+    | When using the "database" session driver, you may specify the table to
+    | be used to store sessions. Of course, a sensible default is defined
+    | for you; however, you're welcome to change this to another table.
+    |
+    */
+
+    'table' => env('SESSION_TABLE', 'sessions'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cache Store
+    |--------------------------------------------------------------------------
+    |
+    | When using one of the framework's cache driven session backends, you may
+    | define the cache store which should be used to store the session data
+    | between requests. This must match one of your defined cache stores.
+    |
+    | Affects: "dynamodb", "memcached", "redis"
+    |
+    */
+
+    'store' => env('SESSION_STORE'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Sweeping Lottery
+    |--------------------------------------------------------------------------
+    |
+    | Some session drivers must manually sweep their storage location to get
+    | rid of old sessions from storage. Here are the chances that it will
+    | happen on a given request. By default, the odds are 2 out of 100.
+    |
+    */
+
+    'lottery' => [2, 100],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Name
+    |--------------------------------------------------------------------------
+    |
+    | Here you may change the name of the session cookie that is created by
+    | the framework. Typically, you should not need to change this value
+    | since doing so does not grant a meaningful security improvement.
+    |
+    */
+
+    'cookie' => env(
+        'SESSION_COOKIE',
+        Str::slug((string) env('APP_NAME', 'laravel')).'-session'
+    ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Path
+    |--------------------------------------------------------------------------
+    |
+    | The session cookie path determines the path for which the cookie will
+    | be regarded as available. Typically, this will be the root path of
+    | your application, but you're free to change this when necessary.
+    |
+    */
+
+    'path' => env('SESSION_PATH', '/'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Domain
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the domain and subdomains the session cookie is
+    | available to. By default, the cookie will be available to the root
+    | domain without subdomains. Typically, this shouldn't be changed.
+    |
+    */
+
+    'domain' => env('SESSION_DOMAIN'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTTPS Only Cookies
+    |--------------------------------------------------------------------------
+    |
+    | By setting this option to true, session cookies will only be sent back
+    | to the server if the browser has a HTTPS connection. This will keep
+    | the cookie from being sent to you when it can't be done securely.
+    |
+    */
+
+    'secure' => env('SESSION_SECURE_COOKIE'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTTP Access Only
+    |--------------------------------------------------------------------------
+    |
+    | Setting this value to true will prevent JavaScript from accessing the
+    | value of the cookie and the cookie will only be accessible through
+    | the HTTP protocol. It's unlikely you should disable this option.
+    |
+    */
+
+    'http_only' => env('SESSION_HTTP_ONLY', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Same-Site Cookies
+    |--------------------------------------------------------------------------
+    |
+    | This option determines how your cookies behave when cross-site requests
+    | take place, and can be used to mitigate CSRF attacks. By default, we
+    | will set this value to "lax" to permit secure cross-site requests.
+    |
+    | See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
+    |
+    | Supported: "lax", "strict", "none", null
+    |
+    */
+
+    'same_site' => env('SESSION_SAME_SITE', 'lax'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Partitioned Cookies
+    |--------------------------------------------------------------------------
+    |
+    | Setting this value to true will tie the cookie to the top-level site for
+    | a cross-site context. Partitioned cookies are accepted by the browser
+    | when flagged "secure" and the Same-Site attribute is set to "none".
+    |
+    */
+
+    'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
+
+];
+</file>
+
+<file path="database/.gitignore">
+*.sqlite*
+</file>
+
+<file path="database/migrations/0001_01_01_000001_create_cache_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('cache', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->mediumText('value');
+            $table->integer('expiration')->index();
+        });
+
+        Schema::create('cache_locks', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->string('owner');
+            $table->integer('expiration')->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('cache');
+        Schema::dropIfExists('cache_locks');
+    }
+};
+</file>
+
+<file path="database/migrations/0001_01_01_000002_create_jobs_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('jobs', function (Blueprint $table) {
+            $table->id();
+            $table->string('queue')->index();
+            $table->longText('payload');
+            $table->unsignedTinyInteger('attempts');
+            $table->unsignedInteger('reserved_at')->nullable();
+            $table->unsignedInteger('available_at');
+            $table->unsignedInteger('created_at');
+        });
+
+        Schema::create('job_batches', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('name');
+            $table->integer('total_jobs');
+            $table->integer('pending_jobs');
+            $table->integer('failed_jobs');
+            $table->longText('failed_job_ids');
+            $table->mediumText('options')->nullable();
+            $table->integer('cancelled_at')->nullable();
+            $table->integer('created_at');
+            $table->integer('finished_at')->nullable();
+        });
+
+        Schema::create('failed_jobs', function (Blueprint $table) {
+            $table->id();
+            $table->string('uuid')->unique();
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('job_batches');
+        Schema::dropIfExists('failed_jobs');
+    }
+};
+</file>
+
+<file path="database/migrations/2026_03_12_105048_create_post_tag_table.php">
+<?php
+
+use App\Models\Post;
+use App\Models\Tag;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Post::class);
+            $table->foreignIdFor(Tag::class);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('post_tag');
+    }
+};
+</file>
+
+<file path="package.json">
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.0.0",
+        "axios": "^1.11.0",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^2.0.0",
+        "tailwindcss": "^4.0.0",
+        "vite": "^7.0.7"
+    }
+}
+</file>
+
+<file path="phpunit.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NIGHTWATCH_ENABLED" value="false"/>
+    </php>
+</phpunit>
+</file>
+
+<file path="public/.htaccess">
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+</file>
+
+<file path="public/index.php">
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
+
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$app->handleRequest(Request::capture());
+</file>
+
+<file path="public/robots.txt">
+User-agent: *
+Disallow:
+</file>
+
+<file path="README.md">
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
+
+## About Laravel
+
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Learning Laravel
+
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</file>
+
+<file path="resources/css/app.css">
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+</file>
+
+<file path="resources/js/app.js">
+import './bootstrap';
+</file>
+
+<file path="resources/js/bootstrap.js">
+import axios from 'axios';
+window.axios = axios;
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+</file>
+
+<file path="resources/views/comments/create.blade.php">
+<x-layout>
+    <x-slot:heading>Write a comment for post: {{$post->id}}</x-slot:heading>
+
+    <p>Post title: {{$post->content}}</p>
+    <form action="/posts/{{ $post->id }}/comment" method="POST">
+        @csrf
+        <div class="space-y-12">
+            <div class="border-b border-white/10 pb-12">
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                <label for="content" class="block text-sm/6 font-medium text-white">Comment</label>
+                <div class="mt-2">
+                    <textarea id="content" name="content" rows="3" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" required></textarea>
+                    @error('content')
+                        <p class="text-red-500 text-sm">{{$message}}</p>
+                    @enderror
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+            <a href="/posts" class="text-sm/6 font-semibold text-white">Cancel</a>
+            <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">Create</button>
+        </div>
+    </form>
+
+</x-layout>
+</file>
+
+<file path="resources/views/comments/edit.blade.php">
+<x-layout>
+    <x-slot:heading>Edit comment: {{$comment->id}}</x-slot:heading>
+
+
+    <form action="" method="POST">
+        @csrf
+        <div class="space-y-12">
+            <div class="border-b border-white/10 pb-12">
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                <label for="content" class="block text-sm/6 font-medium text-white">Comment</label>
+                <div class="mt-2">
+                    <textarea id="content" name="content" rows="3" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" required>{{$comment->content}}</textarea>
+                    @error('content')
+                        <p class="text-red-500 text-sm">{{$message}}</p>
+                    @enderror
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+            <a href="/posts/{{ $comment->post->id }}" class="text-sm/6 font-semibold text-white">Cancel</a>
+            <form action="{{ route('comments.update', ['comment']) }}" method="post">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">Save</button>
+            </form>
+        </div>
+    </form>
+
+</x-layout>
+</file>
+
+<file path="resources/views/posts/edit.blade.php">
+<x-layout>
+    <x-slot:heading>Edit post with id = {{$post->id}}</x-slot:heading>
+
+    <form action="/posts/{{$post->id}}" method="POST">
+        @csrf
+        @method('PATCH')
+        <div class="space-y-12">
+            <div class="border-b border-white/10 pb-12">
+            <h2 class="text-base/7 font-semibold text-white">User: {{$post->user->username}}</h2>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                <label for="content" class="block text-sm/6 font-medium text-white">Text</label>
+                <div class="mt-2">
+                    <textarea id="content" name="content" rows="3" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" required>{{$post->content}}</textarea>
+                    @error('content')
+                        <p class="text-red-500 text-sm">Content must be longer than 2 characters</p>
+                    @enderror
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+            <a href="/posts" class="text-sm/6 font-semibold text-white">Cancel</a>
+            <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">Save</button>
+        </div>
+    </form>
+
+</x-layout>
+</file>
+
+<file path="resources/views/users/edit.blade.php">
+<x-layout>
+    <x-slot:heading></x-slot:heading>
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="mx-auto h-10 w-auto" />
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Edit user {{$user->username}}</h2>
+  </div>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form action="/users/{{ $user->id }}" method="POST" class="space-y-4">
+      @csrf
+      @method('PATCH')
+    
+      <div>
+        <label for="username" class="block text-sm/6 font-medium text-gray-100">Username</label>
+        <div class="mt-1">
+          <input id="username" type="username" name="username" required autocomplete="username" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{ $user->username }}"/>
+        </div>
+        @error('username')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm/6 font-medium text-gray-100">Email address</label>
+        <div class="mt-1">
+          <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{ $user->email }}"/>
+        </div>
+        @error('email')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+      
+      <div>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save change</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+</x-layout>
+</file>
+
+<file path="resources/views/users/index.blade.php">
+<x-layout>
+    <x-slot:heading>Users</x-slot:heading>
+
+<div class="container mx-auto py-8 px-4">
+    <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+            @foreach ($users as $user)
+                <li class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
+                    <a href="/users/{{ $user->id }}" class="block px-6 py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center min-w-0">
+                                <div class="h-10 w-10 flex-shrink-0 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                                    <span class="text-sm font-medium text-indigo-700 dark:text-indigo-300">
+                                        {{ strtoupper(substr($user->usename, 0, 2)) }}
+                                    </span>
+                                </div>
+                                
+                                <div class="ml-4">
+                                    <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                                        {{ $user->username }}
+                                    </p>
+                                    
+                                    <div class="flex items-center space-x-3 mt-1">
+                                        <p class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                                            {{ $user->email }}
+                                        </p>
+                                        <span class="text-gray-300 dark:text-gray-600">•</span>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs font-medium text-blue-600 dark:text-blue-400">
+                                                {{ $user->posts_count }} {{ Str::plural('post', $user->posts_count) }}
+                                            </span>
+                                            <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                                                {{ $user->comments_count }} {{ Str::plural('comment', $user->comments_count) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
+    <div class="mt-6">
+        {{ $users->links() }}
+    </div>
+</div>
+
+
+</x-layout>
+</file>
+
+<file path="routes/console.php">
+<?php
+
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+
+Artisan::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
+</file>
+
+<file path="storage/app/.gitignore">
+*
+!private/
+!public/
+!.gitignore
+</file>
+
+<file path="storage/app/private/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/app/public/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/debugbar/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/.gitignore">
+compiled.php
+config.php
+down
+events.scanned.php
+maintenance.php
+routes.php
+routes.scanned.php
+schedule-*
+services.json
+</file>
+
+<file path="storage/framework/cache/.gitignore">
+*
+!data/
+!.gitignore
+</file>
+
+<file path="storage/framework/cache/data/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/sessions/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/testing/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/views/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/logs/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="tests/Feature/ExampleTest.php">
+<?php
+
+test('the application returns a successful response', function () {
+    $response = $this->get('/');
+
+    $response->assertStatus(200);
+});
+</file>
+
+<file path="tests/Pest.php">
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Test Case
+|--------------------------------------------------------------------------
+|
+| The closure you provide to your test functions is always bound to a specific PHPUnit test
+| case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
+| need to change it using the "pest()" function to bind a different classes or traits.
+|
+*/
+
+pest()->extend(Tests\TestCase::class)
+ // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->in('Feature');
+
+/*
+|--------------------------------------------------------------------------
+| Expectations
+|--------------------------------------------------------------------------
+|
+| When you're writing tests, you often need to check that values meet certain conditions. The
+| "expect()" function gives you access to a set of "expectations" methods that you can use
+| to assert different things. Of course, you may extend the Expectation API at any time.
+|
+*/
+
+expect()->extend('toBeOne', function () {
+    return $this->toBe(1);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Functions
+|--------------------------------------------------------------------------
+|
+| While Pest is very powerful out-of-the-box, you may have some testing code specific to your
+| project that you don't want to repeat in every file. Here you can also expose helpers as
+| global functions to help you to reduce the number of lines of code in your test files.
+|
+*/
+
+function something()
+{
+    // ..
+}
+</file>
+
+<file path="tests/TestCase.php">
+<?php
+
+namespace Tests;
+
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+
+abstract class TestCase extends BaseTestCase
+{
+    //
+}
+</file>
+
+<file path="tests/Unit/ExampleTest.php">
+<?php
+
+test('that true is true', function () {
+    expect(true)->toBeTrue();
+});
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+        tailwindcss(),
+    ],
+    server: {
+        watch: {
+            ignored: ['**/storage/framework/views/**'],
+        },
+    },
+});
+</file>
+
+<file path="app/Http/Controllers/SessionController.php">
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
+
+class SessionController extends Controller
+{
+
+    public function create() {
+        return view('auth.login');
+    }
+    public function store(Request $request) {
+        //validate
+        $attributes = $request->validate([
+            'email' => ['required', 'min:3', 'email'],
+            'password' => ['required', Password::min(3)]
+        ]);
+
+
+        //attempt to log in user
+        if(!Auth::attempt($attributes)) {
+            throw ValidationException::withMessages([
+                'password' => "Couldn't find user with those credentials!"
+            ]);
+        }
+
+        //regenerate session
+        $request->session()->regenerate();
+
+        //redirect
+        return redirect('/');
+    }
+
+   public function destroy()
+    {
+        Auth::logout();
+
+        return redirect('/');
+    }
+}
+</file>
+
+<file path="composer.json">
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10.1"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "fruitcake/laravel-debugbar": "^4.2",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.24",
+        "laravel/sail": "^1.41",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^3.8",
+        "pestphp/pest-plugin-laravel": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --force",
+            "npm install",
+            "npm run build"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
+</file>
+
+<file path="database/factories/CommentFactory.php">
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
+ */
+class CommentFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'user_id' => User::factory(),
+            'post_id' => Post::factory(),
+            'content' => fake()->sentence(12)
+        ];
+    }
+}
+</file>
+
+<file path="database/factories/PostFactory.php">
+<?php
+
+namespace Database\Factories;
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ */
+class PostFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'user_id' => User::factory(),
+            'content' => fake()->text()
+        ];
+    }
+}
+</file>
+
+<file path="database/factories/TagFactory.php">
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
+ */
+class TagFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->word()
+        ];
+    }
+}
+</file>
+
+<file path="database/migrations/2026_03_11_095042_create_posts_table.php">
+<?php
+
+use App\Models\User;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->text('content');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('posts');
+    }
+};
+</file>
+
+<file path="database/migrations/2026_03_11_100427_create_comments_table.php">
+<?php
+
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Post::class)->constrained()->cascadeOnDelete();
+            $table->text('content');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('comments');
+    }
+};
+</file>
+
+<file path="database/migrations/2026_03_12_104345_create_tags_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('tags');
+    }
+};
+</file>
+
+<file path="resources/views/auth/login.blade.php">
+<x-layout>
+    <x-slot:heading></x-slot:heading>
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Log In!</h2>
+  </div>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form :action="route('login.store')" method="POST" class="space-y-4">
+      @csrf
+
+      <div>
+        <label for="email" class="block text-sm/6 font-medium text-gray-100">Email address</label>
+        <div class="mt-1">
+          <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('email')}}"/>
+        </div>
+        @error('email')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+      
+      <div>
+        <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
+        <div class="mt-1">
+          <input id="password" type="password" name="password" required autocomplete="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+        </div>
+        @error('password')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+      
+      <div>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Sign in</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+</x-layout>
+</file>
+
+<file path="resources/views/home.blade.php">
+<x-layout>
+    <x-slot:heading>Heading slot</x-slot:heading>
+    ovo je slot
+</x-layout>
+</file>
+
+<file path="resources/views/posts/create.blade.php">
+<x-layout>
+    <x-slot:heading>Create a post</x-slot:heading>
+
+    <form action="/posts" method="POST">
+        @csrf
+        <div class="space-y-12">
+            <div class="border-b border-white/10 pb-12">
+            <h2 class="text-base/7 font-semibold text-white">Profile</h2>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                    <label for="content" class="block text-sm/6 font-medium text-white">Text</label>
+                    <div class="mt-2">
+                        <textarea id="content" name="content" rows="3" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" required></textarea>
+                        @error('content')
+                            <p class="text-red-500 text-sm">Content must be longer than 2 characters</p>
+                        @enderror
+                    </div>
+                    
+                    <label>Select Tags:</label>
+                    <div class="tag-container">
+                        @foreach($tags as $tag)
+                            <div class="tag-item">
+                                <input type="checkbox" 
+                                    name="tags[]" 
+                                    value="{{ $tag->id }}" 
+                                    id="tag-{{ $tag->id }}">
+                                <label for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+            <a href="/posts" class="text-sm/6 font-semibold text-white">Cancel</a>
+            <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">Create</button>
+        </div>
+    </form>
+
+</x-layout>
+</file>
+
+<file path="resources/views/tags/show.blade.php">
+<x-layout>
+    <x-slot:heading>
+        <span class="text-gray-500 font-normal">Posts tagged with:</span> #{{ $tag->name }}
+    </x-slot:heading>
+
+    <div class="max-w-4xl mx-auto mt-8 px-4">
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-700">
+                Latest Content
+            </h2>
+            <span class="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                {{ $tag->posts->count() }} total posts
+            </span>
+        </div>
+
+        <div class="space-y-6">
+            @foreach ($tag->posts as $post)
+                <div class="group relative bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+                    
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                        <div class="flex-1">
+                            <a href="/posts/{{ $post->id }}" class="block group">
+                                <p class="text-gray-800 text-lg leading-relaxed group-hover:text-blue-600 transition-colors">
+                                    {{ $post->content }}
+                                </p>
+                            </a>
+                            
+                            <div class="mt-4 flex items-center gap-2">
+                                <div class="h-6 w-6 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-500 flex items-center justify-center text-[10px] text-white font-bold">
+                                    {{ strtoupper(substr($post->user->username, 0, 1)) }}
+                                </div>
+                                <span class="text-sm text-gray-500">
+                                    Published by 
+                                    <a href="/users/{{ $post->user->id }}" class="font-medium text-gray-900 hover:text-blue-500 underline decoration-gray-200 underline-offset-4">
+                                        {{ $post->user->username }}
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row md:flex-col items-center justify-center bg-gray-50 rounded-lg p-3 border border-gray-100 min-w-[80px]">
+                            <span class="text-xl font-bold text-gray-800">{{ $post->comments_count }}</span>
+                            <span class="text-[10px] uppercase font-bold text-gray-400 tracking-tighter">Comments</span>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        @if($tag->posts->isEmpty())
+            <div class="text-center py-20 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
+                <p class="text-gray-500 text-lg">No posts have been tagged with #{{ $tag->name }} yet.</p>
+            </div>
+        @endif
+    </div>
+</x-layout>
+</file>
+
+<file path="app/Models/Comment.php">
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Comment extends Model
+{
+    /** @use HasFactory<\Database\Factories\CommentFactory> */
+    use HasFactory;
+
+    protected $fillable = ['content', 'user_id'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function post() {
+        return $this->belongsTo(Post::class);
+    }
+}
+</file>
+
+<file path="app/Models/Tag.php">
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Tag extends Model
+{
+    /** @use HasFactory<\Database\Factories\TagFactory> */
+    use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public function posts() {
+        return $this->belongsToMany(Post::class);
+    }
+}
+</file>
+
+<file path="database/factories/UserFactory.php">
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
+class UserFactory extends Factory
+{
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'username' => fake()->userName(),
+            'email' => fake()->unique()->safeEmail(),
+            'password' => fake()->password()
+        ];
+    }
+}
+</file>
+
+<file path="database/migrations/0001_01_01_000000_create_users_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password')->unique();
+            $table->timestamps();
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
+    }
+};
+</file>
+
+<file path="resources/views/auth/register.blade.php">
+<x-layout>
+    <x-slot:heading></x-slot:heading>
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="mx-auto h-10 w-auto" />
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Create an account!</h2>
+  </div>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form :action="route('register.store')" method="POST" class="space-y-4">
+      @csrf
+
+      <div>
+        <label for="username" class="block text-sm/6 font-medium text-gray-100">Username</label>
+        <div class="mt-1">
+          <input id="username" type="username" name="username" required autocomplete="username" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('username')}}"/>
+        </div>
+        @error('username')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm/6 font-medium text-gray-100">Email address</label>
+        <div class="mt-1">
+          <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" value="{{old('email')}}"/>
+        </div>
+        @error('email')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+      
+      <div>
+        <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
+        <div class="mt-1">
+          <input id="password" type="password" name="password" required autocomplete="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+        </div>
+        @error('password')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+      
+      <div>
+        <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-100">Repeat Password</label>
+        <div class="mt-1">
+          <input id="password_confirmation" type="password" name="password_confirmation" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+        </div>
+        @error('password_confirmation')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+      </div>
+      
+      <div>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Sign in</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+</x-layout>
+</file>
+
+<file path="resources/views/components/nav-link.blade.php">
+@props(['active' => false, 'button' => false])
+@if ($button == false)
+<a {{ $attributes }} class="{{ ($active) ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium" aria-current="{{$active}}">
+    {{ $slot }}
+</a>
+@else
+<button class="{{ ($active) ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium" aria-current="{{$active}}">{{$slot}}</button>
+
+@endif
+</file>
+
+<file path="app/Http/Controllers/PostController.php">
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+use App\Models\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class PostController extends Controller
+{
+
+    public function index()
+    {
+        $query = Post::latest()->withCount('comments')->with('user:id,username', 'tags:id,name');
+
+        if(request()->query('filter') === 'has_comments') {
+            $query = $query->has('comments');
+        }
+
+        return view('posts.index',['posts' => $query->simplePaginate(10)]);
+    }
+
+    public function create()
+    {
+        return view('posts.create', ['tags' => Tag::all()]);
+    }
+
+    public function store(Request $request)
+    {
+        //validate
+        $validated = $request->validate([
+            'content' => ['required', 'min:3']
+        ]);
+
+        //create post
+        $post = Post::create([
+            'user_id' => Auth::user()->id,
+            'content' => $validated['content']
+        ]);
+
+        //add post_tag
+        if($request->has('tags')) {
+            $post->tags()->attach($request->tags);
+        }
+
+
+        //redirect
+        return redirect('/posts');
+        
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', ['post' => $post->load('user:id,username,email', 'comments.user:id,username', 'tags:id,name')]);
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+
+        $attributes = $request->validate([
+            'content' => ['required', 'min:3']
+        ]);
+
+        $post->update($attributes);
+
+        return redirect("/posts/{$post->id}");
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect('/posts');
+    }
+}
+</file>
+
+<file path="app/Http/Controllers/RegisteredUserController.php">
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\RegisteredUser;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
+
+class RegisteredUserController extends Controller
+{
+
+    public function create()
+    {
+        return view('auth.register');
+    }
+
+    public function store(Request $request)
+    {
+
+        //validate
+        $attributes = $request->validate([
+            'username' => ['required', 'min:3'],
+            'email' => ['required', 'email'],
+            'password' => ['required', Password::min(3), 'confirmed'],
+        ],
+        [
+            'password.confirmed' => "Passwords don't match"
+        ]);
+
+        //create session
+        $user = User::create($attributes);
+
+        //log in user
+        Auth::login($user);
+
+        //redirect
+        return redirect('/');
+    }
+}
+</file>
+
+<file path="app/Http/Controllers/UserController.php">
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+
+    public function index()
+    {
+        return view('users.index', ['users' => User::withCount('posts', 'comments')->paginate(5)]);
+    }
+
+    public function show(User $user)
+    {
+        return view('users.show', ['user' => $user->load('posts.tags')->loadCount('comments')]);
+    }
+
+    public function edit(User $user)
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        //validate
+        $request->validate([
+            'username' => ['required', 'min:3'],
+            'email' => ['required', 'email']
+        ]);
+
+        //change
+        $user->update([
+            'username' => $request['username'],
+            'email' => $request['email']
+        ]);
+
+        return redirect("/users/{$user->id}");
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect('/users');
+    }
+}
+</file>
+
+<file path="app/Models/Post.php">
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    /** @use HasFactory<\Database\Factories\PostFactory> */
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'content'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
+}
+</file>
+
+<file path="app/Providers/AppServiceProvider.php">
+<?php
+
+namespace App\Providers;
+
+use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //Post
+        Gate::define('edit-post', function(User $user, Post $post) {
+            return $post->user->is($user);
+        });
+        Gate::define('delete-post', function(User $user, Post $post) {
+            return $post->user->is($user);
+        });
+
+        //Comment
+        Gate::define('edit-comment', function(User $user, Comment $comment) {
+            return $comment->user->is($user);
+        });
+        Gate::define('delete-comment', function(User $user, Comment $comment) {
+            return $comment->user->is($user);
+        });
+
+        //User
+        Gate::define('edit-user', function(User $authenticatedUser, User $profileUser) {
+            return $authenticatedUser->is($profileUser);
+        });
+        Gate::define('delete-user', function(User $authenticatedUser, User $profileUser) {
+            return $authenticatedUser->is($profileUser);
+        });
+        
+    }
+}
+</file>
+
+<file path="database/seeders/DatabaseSeeder.php">
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Comment;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    use WithoutModelEvents;
+
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+
+        $users = User::factory(10)->create();
+        $tags = Tag::factory(10)->create();
+        $posts = Post::factory(100)
+            ->recycle($users)
+            ->create()
+            ->each(fn($post) => 
+                $post->tags()->attach($tags->random(rand(1, 3)))
+            );
+        Comment::factory(600)->recycle($posts)->recycle($users)->create();
+
+    }
+}
+</file>
+
+<file path="app/Http/Controllers/CommentController.php">
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Comment;
+use App\Models\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class CommentController extends Controller
+{
+
+    public function create(Post $post) {
+        return view('comments.create', ['post' => $post]);
+    }
+    public function store(Request $request, Post $post)
+    {
+        //validate
+        $attributes = $request->validate([
+            'content' => ['required', 'min:2']
+        ]);
+
+        //create comment
+        $post->comments()->create([
+            'user_id' => Auth::id(),
+            'content' => $attributes['content']
+        ]);
+
+        //redirect
+        return redirect("/posts/{$post->id}");
+    }
+    public function edit(Comment $comment) {
+        return view('comments.edit', compact('comment'));
+    }
+
+    public function update(Request $request, Comment $comment)
+    {
+        $request->validate(['content' => ['required', 'min:3']]);
+
+        $comment->update(['content' => $request['content']]);
+
+        return redirect("/posts/{$comment->post->id}");
+    }
+
+    public function destroy(Comment $comment)
+    {
+
+        $post_id = $comment->post->id;
+
+        $comment->delete();
+
+        return redirect("/posts/{$post_id}");
+    }
+}
+</file>
+
+<file path="app/Models/User.php">
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'username',
+        'email',
+        'password'
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed', // This tells Laravel to hash it automatically!
+        ];
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+}
+</file>
+
+<file path="resources/views/components/layout.blade.php">
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+</head>
+<body class="h-full">
+    <div class="min-h-full">
+    <nav class="bg-gray-800/50">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                    <div class="shrink-0">
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <x-nav-link href="/" :active="request()->is('/')" >Home</x-nav-link>
+                            <x-nav-link href="/users" :active="request()->is('users')" >Users</x-nav-link>
+                            <x-nav-link href="/posts" :active="request()->is('posts')" >Posts</x-nav-link>
+                        </div>
+                    </div>
+                </div>
+                @guest
+                    <div>
+                        <x-nav-link href="/login" :active="request()->is('login')">Log In</x-nav-link>
+                        <x-nav-link href="/register" :active="request()->is('register')">Register</x-nav-link>
+
+                    </div>
+                @endguest
+                @auth
+                    <div>
+                        <p class="text-white">Logged in: {{Auth::user()->username}}</p>
+                        <form action="/session" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <x-nav-link :button="true">Log Out</x-nav-link>
+                        </form>
+                    </div>
+                @endauth
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-white">{{ $heading }}</h1>
+        @auth
+            <h1 class="text-white">Hello, {{Auth::user()->username}}!</h1>
+        @endauth
+        </div>
+    </header>
+    <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 text-white">
+        {{ $slot }}
+        </div>
+    </main>
+    </div>
+
+</body>
+</html>
+</file>
+
+<file path="resources/views/posts/index.blade.php">
+<x-layout>
+    <x-slot:heading>Posts</x-slot:heading>
+
+    <div class="container mx-auto px-4 pt-8">
+        <div class="flex items-center justify-between">
+            <div>
+                @if(request('filter') === 'has_comments')
+                    <a href="/posts" 
+                    class="inline-flex items-center gap-x-2 rounded-lg bg-gray-100 dark:bg-gray-700 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-gray-500">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Clear Filter
+                    </a>
+                @else
+                    <a href="/posts?filter=has_comments" 
+                    class="inline-flex items-center gap-x-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-gray-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        Show only posts with comments
+                    </a>
+                @endif
+            </div>
+
+            @auth
+            <a href="{{ route('posts.create') }}" 
+                class="inline-flex items-center gap-x-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                Create Post
+            </a>
+            @endauth
+        </div>
+    </div>
+    <div class="container mx-auto py-8 px-4">
+        <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                @foreach ($posts as $post)
+                    <li class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
+                        <a href="/posts/{{ $post->id }}" class="block px-6 py-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center min-w-0">
+                                    <div class="h-10 w-10 flex-shrink-0 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                                        <span class="text-sm font-medium text-indigo-700 dark:text-indigo-300">
+                                            {{ strtoupper(substr($post->content, 0, 2)) }}
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="ml-4">
+                                        <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                                            {{ $post->content }}
+                                        </p>
+                                        
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                                                By {{ $post->user->username }}
+                                            </span>
+                                            
+                                            <span class="text-gray-300 dark:text-gray-600">•</span>
+
+                                            <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                                                {{ $post->comments_count }} {{ Str::plural('comment', $post->comments_count) }}
+                                            </span>
+
+                                            <span class="text-gray-300 dark:text-gray-600">•</span>
+
+                                            <span class="text-xs font-medium text-orange-600 dark:text-orange-400">
+                                                @foreach ($post->tags as $tag)
+                                                    {{$tag->name}}
+                                                @endforeach
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="mt-6">
+            {{ $posts->links() }}
+        </div>
+    </div>
+</x-layout>
+</file>
+
+<file path="resources/views/users/show.blade.php">
+<x-layout>
+    <x-slot:heading></x-slot:heading>
+
+    <div class="max-w-4xl mx-auto mt-8 space-y-8">
+        
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+
+            <div class="bg-gray-50 border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h2 class="text-lg font-bold text-gray-800">Account Details</h2>
+                
+
+                <div class="flex items-center space-x-3">
+
+                    @can('edit-user', $user)
+                    <a href="/users/{{ $user->id }}/edit" 
+                    title="Edit Profile"
+                    class="text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 p-2 rounded-lg transition-colors duration-200 border border-blue-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                        </svg>
+                    </a>
+                    @endcan
+
+                    @can('delete-user', $user)
+                    <form action="/users/{{$user->id}}" method="post" onsubmit="return confirm('Are you sure?');">
+                        @csrf
+                        @method('DELETE')
+                        <button title="Delete User" class="cursor-pointer text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition-colors duration-200 border border-red-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                            </svg>
+                        </button>
+                    </form>
+                    @endcan
+                </div>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">User</p>
+                    <p class="text-xl font-bold text-gray-900">{{ $user->username }}</p>
+                    <p class="text-sm text-gray-400">ID: #{{ $user->id }}</p>
+                </div>
+
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email Address</p>
+                    <p class="text-gray-700">{{ $user->email }}</p>
+                </div>
+
+                <div class="flex flex-col items-start md:items-end">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        {{ $user->comments_count }} Comments written
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <div class="flex items-center justify-between mb-4 px-2">
+                <h3 class="text-xl font-bold text-gray-800">Recent Posts</h3>
+                <span class="text-sm text-gray-500 italic">Tip: Click a card to view the full post</span>
+            </div>
+
+            <div class="grid gap-4">
+                @forelse ($user->posts as $post)
+                    <a href="/posts/{{ $post->id }}" 
+                    class="block p-5 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all duration-200 group">
+                        
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            @foreach($post->tags as $tag)
+                                <span class="text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 bg-gray-100 text-gray-500 rounded group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
+                                    {{ $tag->name }}
+                                </span>
+                            @endforeach
+                        </div>
+
+                        <div class="flex justify-between items-start">
+                            <p class="text-gray-700 group-hover:text-blue-600 transition-colors leading-relaxed">
+                                {{ $post->content }}
+                            </p>
+                            <span class="text-gray-300 group-hover:text-blue-500 ml-4">
+                                &rarr;
+                            </span>
+                        </div>
+                    </a>
+                @empty
+                    <p class="text-gray-500 text-center py-10 bg-gray-50 rounded-lg border-2 border-dashed">
+                        This user hasn't posted anything yet.
+                    </p>
+                @endforelse
+            </div>
+        </div>
+
+    </div>
+</x-layout>
+</file>
+
+<file path="resources/views/posts/show.blade.php">
+<x-layout>
+    <x-slot:heading>
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold tracking-tight ">
+                Post ID: {{ $post->id }}
+            </h1>
+
+            <div class="flex items-center gap-x-2">
+                @can('edit-post', $post)
+                <a href="/posts/{{ $post->id }}/edit" 
+                class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    Edit
+                </a>
+                @endcan
+
+                @can('delete-post', $post)
+                <form method="POST" action="/posts/{{ $post->id }}" class="inline-flex">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" 
+                            class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 transition">
+                        Delete
+                    </button>
+                </form>
+                @endcan
+            </div>
+        </div>
+    </x-slot:heading>
+
+    <div class="max-w-3xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        
+        <div class="border-b border-gray-200 pb-4 mb-6">
+            
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm font-semibold text-gray-600">Tags:</span>
+                <div class="flex gap-2">
+                    @foreach ($post->tags as $tag)
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
+                            <a href="/tags/{{ $tag->id }}">{{ $tag->name }}</a>
+                        </span>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="text-sm text-gray-600 space-y-1">
+                <p>
+                    <span class="font-semibold">Created by:</span> 
+                    <a href="/users/{{ $post->user->id }}" class="text-blue-500 hover:underline hover:text-blue-700">
+                        {{ $post->user->username }}
+                    </a>
+                </p>
+                <p><span class="font-semibold">Email:</span> {{ $post->user->email }}</p>
+            </div>
+        </div>
+
+        <div class="text-gray-800 text-lg mb-10 leading-relaxed">
+            <p>{{ $post->content }}</p>
+        </div>
+
+        <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+            <div class="flex-col">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Comments</h3>
+                @auth
+                <a href="/posts/{{ $post->id }}/comment" class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Add comment</a>
+                @endauth
+                @guest
+                    <p class="text-black">Log in to add a comment!</p>
+                @endguest
+            </div>
+
+            <div class="space-y-4">
+                @foreach ($post->comments as $comment)
+                    <div class="relative bg-white p-4 pb-8 rounded-md border border-gray-200 shadow-sm">
+                        <p class="text-gray-700 mb-2">{{ $comment->content }}</p>
+                        <p class="text-xs text-gray-500">
+                            By: <a href="/users/{{ $comment->user->id }}" class="text-blue-500 hover:underline font-medium">{{ $comment->user->username }}</a>
+                        </p>
+
+                        <div class="absolute bottom-3 right-3 flex items-center gap-2">
+                            @can('edit-comment', $comment)
+                            <a href="{{ route('comments.edit', [$comment]) }}" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-2 py-1 rounded transition">Edit</a>
+                            @endcan
+                            @can('delete-comment', $comment)
+                            <form action="{{ route('comments.destroy', ['comment' => $comment]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1 rounded transition cursor-pointer">Delete</button>
+                            </form>
+                            @endcan
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+    </div>
+</x-layout>
+</file>
+
+<file path="routes/web.php">
+<?php
+
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+
+Route::view('/', 'home');
+
+//Auth
+Route::middleware('guest')->group(function() {
+    Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');
+    Route::post('/register', [RegisteredUserController::class, 'store'])->name('register.store');
+    Route::get('/login', [SessionController::class, 'create'])->name('login.create');
+    Route::post('/login', [SessionController::class, 'store'])->name('login.store');
+    });
+Route::delete('/session', [SessionController::class, 'destroy'])->middleware('auth');
+    
+
+Route::controller(UserController::class)->group(function() {
+    Route::get('/users', 'index')->name('users.index');
+    Route::get('/users/{user}', 'show')->name('users.show');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/users/{user}/edit', 'edit')->can('edit-user', 'user')->name('users.edit');
+        Route::patch('/users/{user}', 'update')->can('edit-user', 'user')->name('users.update');
+        Route::delete('/users/{user}', 'destroy')->can('delete-user', 'user')->name('users.destroy');
+    });
+});
+
+Route::controller(PostController::class)->group(function() {
+    Route::middleware('auth')->group(function () {
+        Route::get('/posts/create', 'create')->name('posts.create');
+        Route::post('/posts', 'store')->name('posts.store');
+        
+        Route::get('/posts/{post}/edit', 'edit')->can('edit-post', 'post')->name('posts.edit');
+        Route::patch('/posts/{post}', 'update')->can('edit-post', 'post')->name('posts.update');
+        Route::delete('/posts/{post}', 'destroy')->can('delete-post', 'post')->name('posts.destroy');
+        });
+
+        Route::get('/posts', 'index')->name('posts.index');
+        Route::get('/posts/{post}', 'show')->name('posts.show');
+});
+
+Route::controller(CommentController::class)->group(function() {
+    Route::middleware('auth')->group(function () {
+        Route::get('/posts/{post}/comment', 'create')->name('comments.create');
+        Route::post('/posts/{post}/comment', 'store')->name('comments.store');
+
+        Route::get('/comments/{comment}', 'edit')->can('edit-comment', 'comment')->name('comments.edit');
+        Route::patch('/comments/{comment}', 'update')->can('edit-comment', 'comment')->name('comments.update');
+        Route::delete('/comments/{comment}', 'destroy')->can('delete-comment', 'comment')->name('comments.destroy');
+    });
+});
+
+Route::resource('tags', TagController::class);
+
+
+//To do:
+//if i manually enter the url for which i'm not authorized => redirect back
+</file>
+
+</files>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create', ['tags' => Tag::all()]);
     }
 
     public function store(Request $request)
@@ -33,13 +34,19 @@ class PostController extends Controller
         ]);
 
         //create post
-        Post::create([
+        $post = Post::create([
             'user_id' => Auth::user()->id,
             'content' => $validated['content']
         ]);
 
+        //add post_tag
+        if($request->has('tags')) {
+            $post->tags()->attach($request->tags);
+        }
+
+
         //redirect
-        return redirect('/');
+        return redirect('/posts');
         
     }
 

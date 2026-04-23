@@ -32,17 +32,17 @@ Route::controller(UserController::class)->group(function() {
 });
 
 Route::controller(PostController::class)->group(function() {
-    Route::get('/posts', 'index')->name('posts.index');
-    Route::get('/posts/{post}', 'show')->name('posts.show');
-    
     Route::middleware('auth')->group(function () {
         Route::get('/posts/create', 'create')->name('posts.create');
         Route::post('/posts', 'store')->name('posts.store');
-
+        
         Route::get('/posts/{post}/edit', 'edit')->can('edit-post', 'post')->name('posts.edit');
         Route::patch('/posts/{post}', 'update')->can('edit-post', 'post')->name('posts.update');
         Route::delete('/posts/{post}', 'destroy')->can('delete-post', 'post')->name('posts.destroy');
-    });
+        });
+
+        Route::get('/posts', 'index')->name('posts.index');
+        Route::get('/posts/{post}', 'show')->name('posts.show');
 });
 
 Route::controller(CommentController::class)->group(function() {
@@ -60,6 +60,4 @@ Route::resource('tags', TagController::class);
 
 
 //To do:
-
-//authorization for users, posts, comments
-//crud for tags
+//if i manually enter the url for which i'm not authorized => redirect back
